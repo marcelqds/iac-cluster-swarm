@@ -1,0 +1,7 @@
+FROM postgres
+ENV POSTGRES_DB=toshiro_db
+ENV POSTGRES_USERNAME=toshiro
+ENV POSTGRES_PASSWORD=toshiro
+
+
+
