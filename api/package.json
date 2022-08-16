@@ -1,0 +1,24 @@
+{
+  "name": "api-toshiro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.ts",
+  "scripts": {
+    "tsc": "./node_modules/.bin/tsc",
+    "start:dev": "node-dev --respawn --ignore node_modules src/server.ts",
+    "start:build": "./node_modules/.bin/tsc && node build/src/server.js",
+    "test": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "node-dev": "^7.4.3",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "pg": "^8.7.3"
+  }
+}
