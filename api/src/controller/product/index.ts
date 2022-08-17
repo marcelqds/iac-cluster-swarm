@@ -1,26 +1,44 @@
 import {Request, Response } from 'express';
+import { ProductModel,IInsertProduct } from '../../model';
 
 class ProductController{
-    find(req: Request, res:Response){
-        
-        res.send({});
+
+    async find(req: Request, res:Response){
+        const { id } = req.params;
+        const product = new ProductModel();
+        const result = await product.find(id);
+        console.log({data: result});
+        res.send({data:result});
     }
 
-    findAll(req:Request, res:Response){
-
-        res.send({});       
+    async findAll(req:Request, res:Response){
+        const product = new ProductModel();
+        let result = await product.findAll();
+        console.log(result);
+        res.send({data: result });       
     }
 
-    create(req:Request, res:Response){
-         res.status(201).send({});       
+    async create(req:Request, res:Response){
+        let data:IInsertProduct = req.body as IInsertProduct;
+        const product = new ProductModel();
+        const result = await product.create(data);
+        console.log(result);
+        res.status(201).send({data: result});       
     }
 
-    update(req:Request, res:Response){
-        
-        res.send({});
+    async update(req:Request, res:Response){
+        const { id } = req.params;
+        const data:IInsertProduct = req.body as IInsertProduct;
+        const product = new ProductModel();
+        const result = await product.update(id,data);
+        console.log(result);
+        res.send({data: result});
     }
 
-    delete(req:Request, res:Response){
+    async delete(req:Request, res:Response){
+        const { id } = req.params;
+        const product = new ProductModel();
+        const result = await product.delete(id);
         res.sendStatus(204);
     }
 }

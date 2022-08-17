@@ -40,3 +40,23 @@ Só é possível listar através do cluster gerenciador (manager)
 ```sh
     
 ```
+
+## Modelo tabela `product`
+```SQL
+    CREATE TABLE IF NOT EXISTS product(
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(), 
+        brand varchar(60) not null, 
+        name varchar(50) not null, 
+        price real, 
+        status boolean DEFAULT true, 
+        created_at timestamp DEFAULT CURRENT_TIMESTAMP, 
+        UNIQUE(brand, name)
+    );
+```
+
+
+## Fazendo Inserção na tabela produto através do protocolo http via curl.
+```sh
+    curl -H 'Content-Type: application/json' -d'{"brand": "Pilão","name":"Amoroso","price":6.80}' -X POST http://localhost:3000/product/
+```
+
