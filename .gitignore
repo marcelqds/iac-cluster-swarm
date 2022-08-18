@@ -1,3 +1,5 @@
 api/node_modules
 build
+copy-docker
+dist
 *.swp
