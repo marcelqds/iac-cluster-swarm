@@ -1,5 +1,5 @@
 import { Pool,PoolClient } from 'pg';
-const connectionString = 'postgresql://postgres:toshiro@192.168.1.107:5432/toshiro_db';
+const connectionString = 'postgresql://postgres:toshiro@192.168.1.106:5432/toshiro_db';
 
 interface IPool{
     connect():Promise<PoolClient>
