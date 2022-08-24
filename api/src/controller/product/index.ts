@@ -12,6 +12,7 @@ class ProductController{
     }
 
     async findAll(req:Request, res:Response){
+        console.log("Requisitando");
         const product = new ProductModel();
         let result = await product.findAll();
         console.log(result);

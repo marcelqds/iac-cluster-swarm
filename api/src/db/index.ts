@@ -7,8 +7,10 @@ interface IPool{
 async function connect():Promise<PoolClient>{
     let globalConnect = global as typeof globalThis & {pool:Pool;};
 
-    if(globalConnect.pool)
-        return globalConnect.pool.connect();    
+    if(globalConnect.pool && globalConnect.pool.connect){
+        console.log("Conexao!!");
+        return globalConnect.pool.connect();
+    }
 
     try{
         const pool = new Pool({ connectionString,});
@@ -22,8 +24,10 @@ async function connect():Promise<PoolClient>{
         
         return pool.connect();
     }catch(error){
-        if(error instanceof Error)
-            console.error(`Ocorreu:DB: ${error.message}`);
+        if(error  instanceof Error){
+            console.error(`Ocorreu:DB: `);
+        }
+        console.log("Error no banco de dados", typeof(error));
         process.exit(1);
     }
 }

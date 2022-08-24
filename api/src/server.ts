@@ -6,11 +6,12 @@ let app = express();
 app.use(express.json());
 app.use(routes);
 
-let port = 3000;
+let port = process.env.PORT  || 3000;
 
-app.listen(port, async()=>{
+
+app.listen(port, async()=> {
     await connect();
-    console.info("API Rest Toshiro - start in port "+port);
+    console.info(`API Rest Toshiro - start in port ${port}`);
 });
 
 //https://node-postgres.com/features/connecting
